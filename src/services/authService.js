@@ -52,7 +52,7 @@ async function login({ email, password }) {
         {
             subject: user.id.toString(),
             expiresIn:
-                process.env.JWT_EXPIRES_IN || '1h',
+                process.env.JWT_EXPIRES_IN || '5h',
             issuer:
                 process.env.JWT_ISSUER ||
                 'video-study-api'
