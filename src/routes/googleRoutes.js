@@ -22,10 +22,5 @@ router.get(
     googleController.callback
 );
 
-router.get(
-    '/account',
-    googleDriveController.getConnectedAccount
-);
-
 
 module.exports = router;

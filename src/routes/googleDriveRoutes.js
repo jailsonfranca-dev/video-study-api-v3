@@ -39,5 +39,10 @@ router.get(
     googleDriveController.getVideoMetadata
 );
 
+router.get(
+    '/account',
+    googleDriveController.getConnectedAccount
+);
+
 
 module.exports = router;
