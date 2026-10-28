@@ -161,11 +161,32 @@ async function getVideoMetadata(
     }
 }
 
+async function getConnectedAccount(req, res, next) {
+    try {
+        const drive =
+            await googleDriveService.createAuthenticatedDriveClient(
+                req.user.id
+            );
+
+        const { data } = await drive.about.get({
+            fields: 'user(emailAddress,displayName)'
+        });
+
+        return res.status(200).json({
+            account: data.user
+        });
+
+    } catch (error) {
+        next(error);
+    }
+}
+
 
 module.exports = {
     listRoot,
     listFolder,
     getTree,
     syncFolder,
-    getVideoMetadata
+    getVideoMetadata,
+    getConnectedAccount
 };
